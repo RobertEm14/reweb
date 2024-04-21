@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300..700&family=Square+Peg&display=swap" rel="stylesheet">
+    <title>REWEB.sk</title>
+    <script>
+        function typeWriter() {
+            const text = "Mojou vášňou je vytvárať web, ktorý posúva vašu značku ďalej.";
+            const element = document.getElementById('dynamic-text');
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, 20); // Nastavenie rýchlosti písania
+                }
+            }
+            typing();
+        }
+    
+        window.onload = typeWriter;
+
+
+        const translations = {
+    'home': {
+        'sk': 'Domov',
+        'en': 'Home'
+    },
+    'about': {
+        'sk': 'O Mne',
+        'en': 'About'
+    },
+    'services': { 
+        'sk': 'Služby',
+        'en': 'Services'
+    },
+    'projects': {
+        'sk': 'Projekty',
+        'en': 'Projects'
+    },
+    'contact': {
+        'sk': 'Kontakt',
+        'en': 'Contact'
+    },
+    'title': {
+        'sk': 'Moja stránka',
+        'en': 'My Page'
+    },
+    'welcome': {
+        'sk': 'Vitajte na našej webovej stránke!',
+        'en': 'Welcome to our website!'
+    },
+
+    'text': {
+        'sk': '"Mojou vášňou je vytvárať web, ktorý posúva vašu značku ďalej."',
+        'en': '"My passion is creating a website that moves your brand forward."'
+    }
+    
+};
+
+
+
+function switchLanguage(lang) {
+  document.querySelectorAll("[data-translate]").forEach(el => {
+    let key = el.getAttribute("data-translate"); // Získajte kľúč pre preklad
+    el.textContent = translations[key][lang]; // Aktualizujte text elementu
+  });
+}
+
+    </script>
+    
+    
+    
+</head>
+<body>
+    <div id="container-domov">
+        <header id="nav-container">
+            <nav class="nav">
+                <ul class="nav-ul">
+                    <li><a href="#Home" data-translate="home">Domov</a></li>
+                    <li><a href="#About" data-translate="about">O Mne</a></li>
+                    <li><a href="#Services" data-translate="services">Služby</a></li>
+                    <li><a href="#Projects" data-translate="projects">Projekty</a></li>
+                    <li><a href="#Contact" data-translate="contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="container-content">
+            <div id="logo">
+                <img src="./images/reweblogo1.svg" alt="">
+            </div>
+            <div id="home-image">
+                <img src="./images/homeimg.jpg" alt="Home Image">
+                <div class="centered-text" id="dynamic-text" data-translate="text"></div>
+            </div>
+        </div>
+    </div>
+    <div id="leng-swich">
+    <button onclick="switchLanguage('en')">En</button>
+    <button onclick="switchLanguage('sk')">Sk</button>
+    </div>
+    
+</body>
+</html>
