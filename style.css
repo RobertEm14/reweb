@@ -121,7 +121,7 @@ body {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     #logo, #home-image {
         flex: 1 1 100%; /* Stacks on small screens */
         max-width: 100%;
