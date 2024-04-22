@@ -11,20 +11,20 @@
     <title>REWEB.sk</title>
     <script>
         function typeWriter() {
-            const text = "Mojou vášňou je vytvárať web, ktorý posúva vašu značku ďalej.";
-            const element = document.getElementById('dynamic-text');
-            let i = 0;
-            function typing() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typing, 20); // Nastavenie rýchlosti písania
-                }
-            }
-            typing();
+    const text = "Mojou vášňou je vytvárať web, ktorý posúva vašu značku ďalej.";
+    const element = document.getElementById('dynamic-text');
+    let i = 0;
+    function typing() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing,40); // Adjust the speed of typing here
         }
-    
-        window.onload = typeWriter;
+    }
+    typing();
+}
+
+window.onload = typeWriter;
 
 
         const translations = {
@@ -73,7 +73,17 @@ function switchLanguage(lang) {
   });
 }
 
-    </script>
+document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.getElementById('hamburger');
+    var nav = document.querySelector('.nav');
+
+    hamburger.addEventListener('click', function() {
+        nav.classList.toggle('open'); // This toggles the dropdown
+    });
+});
+
+
+</script>
     
     
     
@@ -81,6 +91,7 @@ function switchLanguage(lang) {
 <body>
     <div id="container-domov">
         <header id="nav-container">
+            <button id="hamburger" aria-label="Open Menu">&#9776;</button> <!-- Hamburger Icon -->
             <nav class="nav">
                 <ul class="nav-ul">
                     <li><a href="#Home" data-translate="home">Domov</a></li>
@@ -88,8 +99,15 @@ function switchLanguage(lang) {
                     <li><a href="#Services" data-translate="services">Služby</a></li>
                     <li><a href="#Projects" data-translate="projects">Projekty</a></li>
                     <li><a href="#Contact" data-translate="contact">Kontakt</a></li>
+                    <li>
+                        <div id="leng-swich" class="leng-visible">
+                            <button onclick="switchLanguage('en')">En</button>
+                            <button onclick="switchLanguage('sk')">Sk</button>
+                            </div>
+                    </li>
                 </ul>
             </nav>
+            
         </header>
         <div id="container-content">
             <div id="logo">
@@ -97,14 +115,13 @@ function switchLanguage(lang) {
             </div>
             <div id="home-image">
                 <img src="./images/homeimg.jpg" alt="Home Image">
-                <div class="centered-text" id="dynamic-text" data-translate="text"></div>
+                <div class="centered-div">
+                    <div class="centered-text" id="dynamic-text" data-translate="text"></div>
+                </div>
             </div>
         </div>
     </div>
-    <div id="leng-swich">
-    <button onclick="switchLanguage('en')">En</button>
-    <button onclick="switchLanguage('sk')">Sk</button>
-    </div>
+    
     
 </body>
 </html>
